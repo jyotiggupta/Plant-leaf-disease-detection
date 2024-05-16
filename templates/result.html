@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf Disease Prediction Result</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: #edede9;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .back-gr{
+            background-image: url("https://i.pinimg.com/564x/e4/b1/c5/e4b1c53f731bce1acd236c0d687bd708.jpg");
+            filter:blur(8px);
+            height: 150vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .back-txt{
+            background-color: rgb(0,0,0,0.4);
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            position: absolute;
+            top: 7.5%;
+            left: 10%;
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #fff;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            color: #fff;
+        }
+
+        h2 {
+            color: #fff;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #FFFBF5;
+        }
+
+        a:active {
+            color: #fff;
+        }
+
+        a:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="back-gr"></div>
+    <div class="back-txt">
+        <div class="result">
+
+            <h1>Leaf Disease Detection Result</h1>
+    
+            <div class="image-container">
+                <img src="{{ image_path }}" alt="Uploaded Image">
+            </div>
+    
+            <div>
+                <p>Predicted Class: {{ predicted_class }}</p>
+            </div>
+    
+            {% if solution %}
+            <div>
+                <h2>Solution</h2>
+                <p>{{ solution }}</p>
+            </div>
+            {% endif %}
+    
+            {% if search_results_json %}
+            <div>
+                <h2>Search Results</h2>
+                <ul>
+                    {% for result in search_results_json %}
+                    <li><a href="{{ result }}" target="_blank">{{ result }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+    
+            <div>
+                <a href="/">Go Back</a>
+            </div>
+    
+        </div>    
+    </div>
+
+    
+</body>
+</html>
